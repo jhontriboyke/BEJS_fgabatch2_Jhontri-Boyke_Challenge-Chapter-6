@@ -1,0 +1,28 @@
+{
+  "name": "binar-be-challenge-ch6",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "binar",
+    "challenge",
+    "bootcamp"
+  ],
+  "author": "Jhontri Boyke",
+  "license": "MIT",
+  "description": "Binar JavaScript Backend - Challenge Chapter 6",
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "imagekit": "^5.1.0",
+    "multer": "^1.4.5-lts.1",
+    "prisma": "^5.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
