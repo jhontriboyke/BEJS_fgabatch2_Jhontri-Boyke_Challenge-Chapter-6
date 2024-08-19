@@ -11,12 +11,24 @@ class ImageService {
     try {
       const { title, description } = req.body;
 
-      const data = await fs.readFile(req.file.path);
+      // const data = await fs.readFile(req.file.path);
+
+      // Check if title already exist
+      const isTitleExist = await prisma.image.findUnique({
+        where: {
+          title: title,
+        },
+      });
+
+      if (isTitleExist) {
+        throw new Error("Title already exist");
+      }
 
       // Upload image
       const uploadFile = await imagekit.upload({
         fileName: req.file.originalname,
-        file: data,
+        file: req.file.buffer,
+        folder: "/Memes",
       });
 
       // Add to database
@@ -29,7 +41,7 @@ class ImageService {
       });
 
       // Delete from server storage
-      await fs.unlink(req.file.path);
+      // await fs.unlink(req.file.path);
 
       return image;
     } catch (error) {
@@ -39,11 +51,7 @@ class ImageService {
 
   async getAll() {
     try {
-      return await prisma.image.findMany({
-        where: {
-          is_deleted: false,
-        },
-      });
+      return await prisma.image.findMany();
     } catch (error) {
       throw error;
     }
@@ -86,6 +94,10 @@ class ImageService {
       if (!image) {
         throw new Error("Image not found");
       }
+
+      // Delete cache
+      const image_url = image.url;
+      const purged = await imagekit.purgeCache(image_url);
 
       // Find imagekit.io file by url
       const files = await imagekit.listFiles({
