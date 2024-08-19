@@ -14,12 +14,10 @@ datasource db {
 }
 
 model Image {
-  id          String    @id @default(uuid())
-  title       String    @unique
+  id          String   @id @default(uuid())
+  title       String   @unique
   description String
-  url         String    @unique
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
-  is_deleted  Boolean   @default(false)
-  deleted_at  DateTime?
+  url         String   @unique
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
