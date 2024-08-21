@@ -1,0 +1,29 @@
+name: Deploy to Railway
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.15.0"
+
+      - name: Install packages
+        run: npm install
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up
