@@ -18,6 +18,9 @@ jobs:
       - name: Install packages
         run: npm install
 
+      - name: Start dev server
+        run: npm run dev
+
       - name: Run test
         env:
           IMAGEKITIO_URL: ${{ secrets.IMAGEKITIO_URL }}
