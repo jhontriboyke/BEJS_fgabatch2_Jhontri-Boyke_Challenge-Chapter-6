@@ -61,7 +61,6 @@ class ImageService {
     return await prisma.image.findUnique({
       where: {
         id: id,
-        is_deleted: false,
       },
     });
   }
