@@ -6,12 +6,18 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* Welcome page */
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Welcome</h1>
+    <p>This is part of my Binar Academy Bootcamp Challenge Chapter 6</p>
+    <p>Go to /images endpoint</p>
+    `);
+});
+
 const imagesRoute = require("./src/routes/image.routes");
 app.use("/images", imagesRoute);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT;
-app.listen(PORT, (req, res) => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = app;

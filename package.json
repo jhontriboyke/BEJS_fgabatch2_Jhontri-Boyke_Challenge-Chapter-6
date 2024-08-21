@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "npm run migrate && node app.js",
+    "dev": "nodemon server.js",
+    "start": "npm run migrate && node server.js",
     "migrate": "prisma migrate deploy",
-    "generate": "prisma generate"
+    "test": "jest"
   },
   "keywords": [
     "binar",
