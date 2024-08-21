@@ -6,6 +6,12 @@ on:
 
 jobs:
   deploy:
+    env:
+      IMAGEKITIO_URL: ${{ secrets.IMAGEKITIO_URL }}
+      IMAGEKITIO_PUBLIC_KEY: ${{ secrets.IMAGEKITIO_PUBLIC_KEY }}
+      IMAGEKITIO_PRIVATE_KEY: ${{ secrets.IMAGEKITIO_PRIVATE_KEY }}
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +28,6 @@ jobs:
         run: npm run dev
 
       - name: Run test
-        env:
-          IMAGEKITIO_URL: ${{ secrets.IMAGEKITIO_URL }}
-          IMAGEKITIO_PUBLIC_KEY: ${{ secrets.IMAGEKITIO_PUBLIC_KEY }}
-          IMAGEKITIO_PRIVATE_KEY: ${{ secrets.IMAGEKITIO_PRIVATE_KEY }}
         run: npm run test
 
       - name: Install Railway
@@ -33,5 +35,3 @@ jobs:
 
       - name: Deploy
         run: railway up --service binar-be-challenge-ch6
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
