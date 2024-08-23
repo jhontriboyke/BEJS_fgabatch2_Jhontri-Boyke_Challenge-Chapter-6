@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
   res.send(`
     <h1>Welcome</h1>
     <p>This is part of my Binar Academy Bootcamp Challenge Chapter 6</p>
-    <p>Go to /images endpoint</p>
+    <p>Go to <a href="./images">/images</a> endpoint</p>
     `);
 });
 
