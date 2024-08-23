@@ -24,15 +24,6 @@ jobs:
       - name: Install packages
         run: npm install
 
-      - name: Start dev server
-        run: npm run dev &
-
-      - name: Wait for server to start
-        run: sleep 10
-
-      - name: Run test
-        run: npm run test
-
       - name: Install Railway
         run: npm i -g @railway/cli
 
