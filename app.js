@@ -1,6 +1,8 @@
 const express = require("express");
 const errorHandler = require("./src/middlewares/error-handler.middleware");
+const Sentry = require("@sentry/node");
 require("dotenv").config();
+require("./src/libs/instrument");
 
 const app = express();
 app.use(express.json());
@@ -17,6 +19,8 @@ app.get("/", (req, res) => {
 
 const imagesRoute = require("./src/routes/image.routes");
 app.use("/images", imagesRoute);
+
+Sentry.setupExpressErrorHandler(app);
 
 app.use(errorHandler);
 

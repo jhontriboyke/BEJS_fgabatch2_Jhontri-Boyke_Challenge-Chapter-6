@@ -18,6 +18,8 @@
   "description": "Binar JavaScript Backend - Challenge Chapter 6",
   "dependencies": {
     "@prisma/client": "^5.18.0",
+    "@sentry/node": "^8.26.0",
+    "@sentry/profiling-node": "^8.26.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
